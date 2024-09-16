@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>GENERAL_ERROR_MSG</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>GENERAL_ERROR_MSG</shortDescription>
+        <value>An unexpected error occurred. Please contact support.</value>
+    </labels>
+    <labels>
+        <fullName>MISSING_PRODUCT_OR_COUNTRY_MSG</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>MISSING_PRODUCT_OR_COUNTRY_MSG</shortDescription>
+        <value>Product or Home Country information is missing</value>
+    </labels>
+    <labels>
+        <fullName>NO_CONTACT_FOUND_MSG</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>NO_CONTACT_FOUND_MSG</shortDescription>
+        <value>No matching contacts found for the provided UUID:</value>
+    </labels>
+</CustomLabels>

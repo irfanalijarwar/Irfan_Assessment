@@ -1,0 +1,37 @@
+<!--
+*********************************************************
+LWC Template Name  : N26_LWC_ProductPricingTable
+Created Date       : September 15, 2024
+@description       : This Lightning Web Component template dynamically displays product pricing information 
+                     in a datatable or shows error/default messages based on the API response.
+                     The UI adapts depending on whether there is data, an error, or no data at all.
+@author            : Irfan Ali
+Modification Log:
+Ver   Date         Author                               Modification
+1.0   09-15-2024   Irfan Ali                            Initial Version
+*********************************************************
+-->
+
+<template>
+    <lightning-card title="Product Pricing Detail" icon-name="standard:product">
+        <template if:true={hasData}>
+            <lightning-datatable
+                key-field="productName"
+                data={productList}
+                columns={columns}
+                hide-checkbox-column 
+                column-widths-mode="fixed"> 
+            </lightning-datatable>
+        </template>
+
+        <template if:true={hasError}>
+            <p class="centered-text">{errorMessage}</p> 
+        </template>
+
+        <template if:false={hasData}>
+            <template if:false={hasError}>
+                <p class="centered-text">No pricing data available.</p>
+            </template>
+        </template>
+    </lightning-card>
+</template>
