@@ -4,7 +4,6 @@
     <label>ContactInfo App</label>
     <oauthConfig>
         <callbackUrl>https://n265-dev-ed.develop.my.salesforce.com</callbackUrl>
-        <consumerKey>3MVG9k02hQhyUgQABsr_s8PKGDAYJLl8yNeKnJ5iRiVQmKBkFhbcsfRFCkdQVE18fN6GA2WDbk8.xwzwOk9ws</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
