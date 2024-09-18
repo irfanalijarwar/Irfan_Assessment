@@ -19,46 +19,46 @@ Before you begin, ensure you have the following:
    Open the terminal in VS Code and run the following command to clone the repository:
 
    **git clone https://github.com/irfanalijarwar/Irfan_Assessment.git**
-After cloning, open the project folder in VS Code:
+   After cloning, open the project folder in VS Code:
 
 cd your-repository
 Authorize the Salesforce Org
 
 
 Step 1: Activate Multi-Currency in Salesforce
-
-Go to Setup in your Salesforce org.
-Search for Company Information in the Quick Find box.
-Click Edit.
-Enable the Activate Multiple Currencies checkbox.
-Save your changes.
-Add Currencies (EUR, GBP)
-After enabling multi-currency, go to Setup and search for Manage Currencies.
-Click New to add new currencies.
-Add Euro (EUR) and British Pound (GBP) with their respective conversion rates.
-Save your changes.
+   
+   Go to Setup in your Salesforce org.
+   Search for Company Information in the Quick Find box.
+   Click Edit.
+   Enable the Activate Multiple Currencies checkbox.
+   Save your changes.
+   Add Currencies (EUR, GBP)
+   After enabling multi-currency, go to Setup and search for Manage Currencies.
+   Click New to add new currencies.
+   Add Euro (EUR) and British Pound (GBP) with their respective conversion rates.
+   Save your changes.
 
 Step 2: Deploy the Project Components in Sequence
 
 2.1 Deploy the FlexiPage (First)
-The first step is to deploy the FlexiPage. You can deploy the FlexiPage using the following command:
+   The first step is to deploy the FlexiPage. You can deploy the FlexiPage using the following command:
 
-sfdx force:source:deploy -p force-app/main/default/flexipages -u <org-name>
+   sfdx force:source:deploy -p force-app/main/default/flexipages -u <org-name>
 
 2.2 Deploy Global Value Sets (Second)
-After deploying the FlexiPage, deploy the Global Value Sets:
+   After deploying the FlexiPage, deploy the Global Value Sets:
 
-sfdx force:source:deploy -p force-app/main/default/globalValueSets -u <org-name>
+   sfdx force:source:deploy -p force-app/main/default/globalValueSets -u <org-name>
 
 2.3 Deploy Objects (Third)
-Next, deploy the custom objects and fields. Run the following command to deploy a specific object:
+   Next, deploy the custom objects and fields. Run the following command to deploy a specific object:
 
-sfdx force:source:deploy -p force-app/main/default/objects -u <org-name>
+   sfdx force:source:deploy -p force-app/main/default/objects -u <org-name>
 
 2.4 Deploy the Entire Project (Last)
-Once you've deployed the key components, you can deploy the rest of the project:
+   Once you've deployed the key components, you can deploy the rest of the project:
 
-sfdx force:source:deploy -p force-app/main/default -u <org-name>
+   sfdx force:source:deploy -p force-app/main/default -u <org-name>
 
 Step 3: Generate Client Credentials for the Connected App for testing ProductPricing API class.
 
@@ -66,35 +66,35 @@ Step 3: Generate Client Credentials for the Connected App for testing ProductPri
 Data Model Design
 
 1. Product2 Object:
-Purpose: Stores the core product information (e.g., Standard, Black, Metal cards).
+   Purpose: Stores the core product information (e.g., Standard, Black, Metal cards).
 
 2. Pricebook2 Object:
-Purpose: Represents different pricebooks (e.g., Standard Pricebook, Country-Specific Pricebooks, Special Offers Pricebook).
-Approach: Use separate pricebooks for different regions or special offers. For example, you could have a Standard Pricebook, DE Pricebook, UK Pricebook and a Special Offer Pricebook.
-Custom Fields:
-Country (Picklist): Captures the country for which pricebook is being created.
+   Purpose: Represents different pricebooks (e.g., Standard Pricebook, Country-Specific Pricebooks, Special Offers Pricebook).
+   Approach: Use separate pricebooks for different regions or special offers. For example, you could have a Standard Pricebook, DE Pricebook, UK Pricebook and a Special Offer Pricebook.
+   Custom Fields:
+   Country (Picklist): Captures the country for which pricebook is being created.
 
 3. PricebookEntry Object:
-Purpose: Links products to pricebooks and defines specific prices based on contract length, special packages, or other factors.
-Custom Fields:
-Contract_Length__c (Picklist): Captures the contract length that the price applies to.
-UnitPrice (Text): Captures actual cost of the product.
-ATM_Fee_in_Other_Currencies__c (Percent): Stores the ATM fees percentage.
-Card_Replacement_Cost__c (Currency): Stores Card replacement cost.
-These custom fields on PricebookEntry allow you to easily modify the pricing for a product based on new factors like contract length or special offers, without needing to modify the base product details.
+   Purpose: Links products to pricebooks and defines specific prices based on contract length, special packages, or other factors.
+   Custom Fields:
+   Contract_Length__c (Picklist): Captures the contract length that the price applies to.
+   UnitPrice (Text): Captures actual cost of the product.
+   ATM_Fee_in_Other_Currencies__c (Percent): Stores the ATM fees percentage.
+   Card_Replacement_Cost__c (Currency): Stores Card replacement cost.
+   These custom fields on PricebookEntry allow you to easily modify the pricing for a product based on new factors like contract length or special offers, without needing to modify the base product details.
 
 Flexibility and Scalability
 
 1. To Modify an Existing Product:
-Simply update the PricebookEntry to reflect any new contract lengths or pricing changes.
+   Simply update the PricebookEntry to reflect any new contract lengths or pricing changes.
 
 2. To Add a New Product:
-Create a new Product2 record with relevant fields.
-Add PricebookEntry records for each pricebook based on region and currency, defining the contract length prices and fees.
-By storing contract length and other data in the PricebookEntry, you maintain flexibility to modify or add new products without modifying the core system.
+   Create a new Product2 record with relevant fields.
+   Add PricebookEntry records for each pricebook based on region and currency, defining the contract length prices and fees.
+   By storing contract length and other data in the PricebookEntry, you maintain flexibility to modify or add new products without modifying the core system.
 
 3. Adding New Package:
-If a new pricing package is introduced in the future (e.g., loyalty, Christmas), you can add a new Pricebook and attach PricebookEntry records to handle these scenarios without modifying existing records or product data.
+   If a new pricing package is introduced in the future (e.g., loyalty, Christmas), you can add a new Pricebook and attach PricebookEntry records to handle these scenarios without modifying existing records or product data.
 
 Example Implementation
 
